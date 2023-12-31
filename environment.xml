@@ -1,0 +1,7 @@
+<environment>
+    <parameter>
+        <key>allure-results</key>
+        <value>4</value>
+    </parameter>
+    <!-- Другие параметры, если есть -->
+</environment>
