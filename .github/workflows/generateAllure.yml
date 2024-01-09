@@ -23,12 +23,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install allure-pytest
 
-#    - name: Run tests and generate Allure report
-#      run: |
-#        pytest --alluredir=./allure-results
-#        allure generate ./allure-results --clean -o ./allure-report
 
     - name: Serve Allure report using Docker
-    run: |
-      docker run -v $PWD/allure:/allure-report -p 8080:8080 allureframework/allure2 serve /allure-report
+      run: |
+        docker run -v $PWD/allure:/allure-report -p 8080:8080 allureframework/allure2 serve /allure-report
       
