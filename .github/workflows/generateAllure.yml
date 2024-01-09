@@ -16,7 +16,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10  # Выберите нужную версию Python
+        python-version: 3.8  # Выберите нужную версию Python
 
     - name: Install dependencies
       run: |
