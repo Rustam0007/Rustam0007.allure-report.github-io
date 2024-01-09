@@ -3,7 +3,7 @@ name: Allure Report
 on:
   push:
     branches:
-      - main  # Укажите ваши ветки по необходимости
+      - main  # Укажите вашу ветку
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8  # Выберите нужную версию Python
+        python-version: 3.8  # Выберите подходящую версию Python
 
     - name: Install dependencies
       run: |
@@ -28,14 +28,7 @@ jobs:
 #        pytest --alluredir=./allure-results
 #        allure generate ./allure-results --clean -o ./allure-report
 
-    - name: Install Allure command-line
-      run: |
-        wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.14.0/allure-commandline-2.14.0.zip
-        unzip allure-commandline-2.14.0.zip
-        sudo cp -r allure-2.14.0/bin/* /usr/local/bin/
-        rm -rf allure-2.14.0 allure-commandline-2.14.0.zip
-
-    - name: Serve Allure report
-      run: |
-        allure serve ./allure-report
-    
+    - name: Serve Allure report using Docker
+      uses: docker://allureframework/allure2:latest
+      with:
+        args: serve ./allure-report
